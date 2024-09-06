@@ -18,7 +18,7 @@ def override_auth_service(mock_auth_service: AuthService):
 @pytest.mark.asyncio
 async def test_login(mock_auth_service: AuthService):
     """
-    Tests that the login endpoint works as expected:
+    Tests the /login endpoint:
     1. Status code is 200
     2. Response contains access_token, refresh_token, and expires_in
     3. AuthService.authenticate is called with the correct arguments
@@ -53,7 +53,7 @@ async def test_login(mock_auth_service: AuthService):
 @pytest.mark.asyncio
 async def test_register(mock_auth_service: AuthService):
     """
-    Tests that the register endpoint works as expected:
+    Tests the /register endpoint:
     1. Status code is 200
     2. Response contains access_token, refresh_token, and expires_in
     3. AuthService.register is called with the correct arguments
@@ -87,7 +87,7 @@ async def test_register(mock_auth_service: AuthService):
 @pytest.mark.asyncio
 async def test_oauth_login(mock_auth_service: AuthService):
     """
-    Tests that the oauth_login endpoint works as expected:
+    Tests the /oauth/{provider} endpoint:
     1. Status code is 200
     2. Response contains access_token, refresh_token, and expires_in
     3. AuthService.complete_oauth_code_flow is called with the correct arguments
@@ -120,7 +120,7 @@ async def test_oauth_login(mock_auth_service: AuthService):
 @pytest.mark.asyncio
 async def test_refresh_token(mock_auth_service: AuthService):
     """
-    Tests that the refresh endpoint works as expected:
+    Tests the /refresh endpoint:
     1. Status code is 200
     2. Response contains access_token, refresh_token, and expires_in
     3. AuthService.refresh_access is called with the correct arguments
@@ -152,7 +152,7 @@ async def test_refresh_token(mock_auth_service: AuthService):
 @pytest.mark.asyncio
 async def test_logout(mock_auth_service: AuthService):
     """
-    Tests that the logout endpoint works as expected:
+    Tests the /logout endpoint:
     1. Status code is 200
     2. AuthService.logout is called with the correct arguments
     """
