@@ -1,8 +1,6 @@
 import asyncio
-import json
 from typing import Optional
 import uuid
-import logging
 from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
 from app.routing.middleware import token_validator, user_id_extractor
@@ -61,5 +59,8 @@ async def get_chat_history(
     chat_service: ChatService = Depends(ChatService),
     user_id: str = Depends(user_id_extractor)
 ):
-    messages = await chat_service.get_history(user_id, session_id)
+    messages = await chat_service.get_history(
+        user_id=user_id, 
+        session_id=session_id
+    )
     return messages
