@@ -3,10 +3,10 @@ import pytest
 from fastapi.testclient import TestClient
 from unittest.mock import AsyncMock, patch
 
-from backend.app.services import AuthService
-from backend.app import app
-from backend.domain.enums.auth import OAuthProvider
-from backend.app.routing.contracts.auth_contracts import AuthenticationPayload, OAuthPayload, RegistrationPayload, RefreshTokenPayload
+from app.services import AuthService
+from app import app
+from domain.enums.auth import OAuthProvider
+from app.routing.contracts.auth_contracts import AuthenticationPayload, OAuthPayload, RegistrationPayload, RefreshTokenPayload
 
 client = TestClient(app)
 
@@ -14,7 +14,7 @@ client = TestClient(app)
 def override_auth_service(mock_auth_service: AuthService):
     return mock_auth_service
 
-@patch("backend.app.services.AuthService", autospec=True)
+@patch("app.services.AuthService", autospec=True)
 @pytest.mark.asyncio
 async def test_login(mock_auth_service: AuthService):
     """
@@ -49,7 +49,7 @@ async def test_login(mock_auth_service: AuthService):
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("backend.app.services.AuthService", autospec=True)
+@patch("app.services.AuthService", autospec=True)
 @pytest.mark.asyncio
 async def test_register(mock_auth_service: AuthService):
     """
@@ -83,7 +83,7 @@ async def test_register(mock_auth_service: AuthService):
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("backend.app.services.AuthService", autospec=True)
+@patch("app.services.AuthService", autospec=True)
 @pytest.mark.asyncio
 async def test_oauth_login(mock_auth_service: AuthService):
     """
@@ -116,7 +116,7 @@ async def test_oauth_login(mock_auth_service: AuthService):
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("backend.app.services.AuthService", autospec=True)
+@patch("app.services.AuthService", autospec=True)
 @pytest.mark.asyncio
 async def test_refresh_token(mock_auth_service: AuthService):
     """
@@ -148,7 +148,7 @@ async def test_refresh_token(mock_auth_service: AuthService):
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("backend.app.services.AuthService", autospec=True)
+@patch("app.services.AuthService", autospec=True)
 @pytest.mark.asyncio
 async def test_logout(mock_auth_service: AuthService):
     """
