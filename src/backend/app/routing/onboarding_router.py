@@ -1,6 +1,5 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from config import get_dashboard_endpoint
-from .responses import raise_bad_request, redirect_ui
 from app.services import UserOnboardingService
 from app.services.user_onboarding_service import VerificationExpiredError
 
@@ -18,8 +17,8 @@ async def verify_user(
         
         # If successful, redirect them to the dashboard
         dashboard_endpoint = get_dashboard_endpoint()
-        return redirect_ui(dashboard_endpoint)
+        return Response(status_code=307, headers={"location": dashboard_endpoint})
     except ValueError as e:
-        raise_bad_request(str(e))
+        return Response(status_code=400, content=str(e))
     except VerificationExpiredError as e:
-        raise_bad_request(str(e))
+        return Response(status_code=400, content="Verification code has expired")
