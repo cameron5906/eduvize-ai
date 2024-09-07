@@ -44,7 +44,7 @@ class AutocompleteService:
         if existing:
             return existing
         
-        prompt_input = get_library_input(subjects, languages, query)
+        prompt_input = get_library_input(valid_subjects, languages, query)
         prompt = AutocompletePrompt().with_input(prompt_input)
         options = prompt.get_options()
         

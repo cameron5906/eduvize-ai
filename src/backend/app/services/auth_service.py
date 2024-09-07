@@ -134,8 +134,7 @@ class AuthService:
         if not user:
             raise ValueError("Invalid user")
         
-        decoded_token = decode_token(refresh_token, get_token_secret())
-        expires_at = int(decoded_token["exp"])
+        expires_at = int(payload["exp"])
         remaining_seconds = expires_at - int(time())
         
         add_to_set_with_expiration(
