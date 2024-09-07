@@ -11,7 +11,7 @@ from domain.enums.course_enums import CurrentSubjectExperience
 
 client = TestClient(app)
 
-@patch("app.services.CourseService", autospec=True)
+@patch("app.routing.course_router.CourseService", autospec=True)
 @patch("app.routing.middleware.token_validator", autospec=True)
 @pytest.mark.asyncio
 async def test_get_courses(mock_token_validator: token_validator, mock_course_service: CourseService):
@@ -52,7 +52,7 @@ async def test_get_courses(mock_token_validator: token_validator, mock_course_se
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("app.services.CourseService", autospec=True)
+@patch("app.routing.course_router.CourseService", autospec=True)
 @patch("app.routing.middleware.token_validator", autospec=True)
 @pytest.mark.asyncio
 async def test_get_course(mock_token_validator: token_validator, mock_course_service: CourseService):
@@ -95,7 +95,7 @@ async def test_get_course(mock_token_validator: token_validator, mock_course_ser
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("app.services.CourseService", autospec=True)
+@patch("app.routing.course_router.CourseService", autospec=True)
 @patch("app.routing.middleware.token_validator", autospec=True)
 @pytest.mark.asyncio
 async def test_complete_section(mock_token_validator: token_validator, mock_course_service: CourseService):
@@ -126,7 +126,7 @@ async def test_complete_section(mock_token_validator: token_validator, mock_cour
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("app.services.CourseService", autospec=True)
+@patch("app.routing.course_router.CourseService", autospec=True)
 @patch("app.routing.middleware.token_validator", autospec=True)
 @pytest.mark.asyncio
 async def test_get_additional_inputs(mock_token_validator: token_validator, mock_course_service: CourseService):
@@ -165,7 +165,7 @@ async def test_get_additional_inputs(mock_token_validator: token_validator, mock
     # Clear overrides after test
     app.dependency_overrides = {}
 
-@patch("app.services.CourseService", autospec=True)
+@patch("app.routing.course_router.CourseService", autospec=True)
 @patch("app.routing.middleware.token_validator", autospec=True)
 @pytest.mark.asyncio
 async def test_generate_course(mock_token_validator: token_validator, mock_course_service: CourseService):
